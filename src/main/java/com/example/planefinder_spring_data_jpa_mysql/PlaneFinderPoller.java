@@ -19,13 +19,13 @@ public class PlaneFinderPoller {
     private WebClient client =
             WebClient.create("http://localhost:7634/api/aircraft");
 
-    @Transactional
+    //@Transactional
     @Scheduled(fixedRate = 1000)
     public void pollPlanes() {
         try {
             repository.deleteAll();
 
-            List<Aircraft> aircraftList = client.get()
+            /*List<Aircraft> aircraftList = client.get()
                     .retrieve()
                     .bodyToFlux(Aircraft.class)
                     .filter(plane -> plane != null && !plane.getReg().isEmpty())
@@ -39,6 +39,16 @@ public class PlaneFinderPoller {
                     repository.save(plane);
                 });
             }
+             */
+            client.get()
+                .retrieve()
+                .bodyToFlux(Aircraft.class)
+                .filter(plane -> !plane.getReg().isEmpty())
+                    .doOnNext(plane -> plane.setId(null))
+                .toStream()
+                .forEach(repository::save);
+
+
 
             repository.findAll().forEach(System.out::println);
         } catch (Exception e) {

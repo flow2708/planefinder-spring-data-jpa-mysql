@@ -17,8 +17,8 @@ public class Aircraft {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Version
-    private Integer version;
+    //@Version
+    //private Integer version;
 
     private String callsign, squawk, reg, flightno, route, type, category;
     private int altitude, heading, speed;
