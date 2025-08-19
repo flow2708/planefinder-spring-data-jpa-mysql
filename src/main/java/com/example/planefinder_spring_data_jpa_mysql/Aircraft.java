@@ -41,4 +41,28 @@ public class Aircraft {
     private Instant posUpdateTime;
     @JsonProperty("bds40_seen_time")
     private Instant bds40SeenTime;
+    public Aircraft(String callsign, String squawk, String reg, String flightno, String route, String type, String category, int altitude, int heading, int speed, int vertRate, int selectedAltitude, double lat, double lon, double barometer, double polarDistance, double polarBearing, boolean isADSB, boolean isOnGround, Instant lastSeenTime, Instant posUpdateTime, Instant bds40SeenTime) {
+        this.callsign = callsign;
+        this.squawk = squawk;
+        this.reg = reg;
+        this.flightno = flightno;
+        this.route = route;
+        this.type = type;
+        this.category = category;
+        this.altitude = altitude;
+        this.heading = heading;
+        this.speed = speed;
+        this.vertRate = vertRate;
+        this.selectedAltitude = selectedAltitude;
+        this.lat = lat;
+        this.lon = lon;
+        this.barometer = barometer;
+        this.polarDistance = polarDistance;
+        this.polarBearing = polarBearing;
+        this.isADSB = isADSB;
+        this.isOnGround = isOnGround;
+        this.lastSeenTime = lastSeenTime;
+        this.posUpdateTime = posUpdateTime;
+        this.bds40SeenTime = bds40SeenTime;
+    }
 }
